@@ -59,6 +59,10 @@ public class DDAService {
 
             final var existsDDAUser = repository.existsByCustomerAndStatus(customerId, DDAStatus.ACTIVE);
 
+            long endQueryTime = System.currentTimeMillis();
+
+            log.info("Query response time: {} ms", (endQueryTime - startTime));
+
             if (Boolean.FALSE.equals(existsDDAUser)) {
                 return;
             }

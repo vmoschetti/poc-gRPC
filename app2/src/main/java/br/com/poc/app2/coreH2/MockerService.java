@@ -21,7 +21,7 @@ public class MockerService {
         final var mocker = new BillMocker();
         final var bills = new ArrayList<BillEntity>();
 
-        for (int i = 0; i < 200000; i++) {
+        for (int i = 0; i < 400000; i++) {
 
             bills.add(mocker.buildMockEntity());
 

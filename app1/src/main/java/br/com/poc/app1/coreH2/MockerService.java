@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -17,19 +19,21 @@ public class MockerService {
         log.info("Loading table");
 
         final var mocker = new DDAMocker();
+        final var ddas = new ArrayList<DDAEntity>();
 
-        final var defaultCustomer = mocker.buildDefaultCustomer();
+        ddas.add(mocker.buildDefaultCustomer());
 
-        repository.save(defaultCustomer);
+        for (int i = 0; i < 40000; i++) {
 
-        for (int i = 0; i < 300; i++) {
-
-            repository.save(mocker.buildMockEntity());
+            ddas.add(mocker.buildMockEntity());
 
         }
 
-        log.info("Load table successfully");
+        log.info("Saving table");
 
+        repository.saveAll(ddas);
+
+        log.info("Load table successfully");
 
 
     }
