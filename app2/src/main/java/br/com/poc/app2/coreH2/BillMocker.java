@@ -14,7 +14,7 @@ public class BillMocker {
     public BillEntity buildMockEntity() {
 
         final var customer = random.nextInt(10000) + 1 <= 7 ? defaultCustomerId : UUID.randomUUID();
-        final var dueDate = LocalDate.now().plusDays(random.nextInt(50));
+        final var dueDate = LocalDate.now().plusDays(random.nextInt(100));
 
         return new BillEntity(UUID.randomUUID(), customer, "Bill ".concat(String.valueOf(counter.getAndIncrement())),
                 String.valueOf(random.nextExponential()), dueDate, random.nextLong(200000) + 100);

@@ -1,6 +1,7 @@
 package br.com.poc.app1.rest.controller;
 
 import br.com.poc.app1.coreH2.DDAEntity;
+import br.com.poc.app1.rest.gateway.BillDTO;
 import br.com.poc.app1.rest.service.DDAService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,4 +24,13 @@ public class GetController {
         return service.findDDAByCustomer(customer);
     }
 
+    @GetMapping("/bills/{customer}")
+    public List<BillDTO> getUserBills(@PathVariable(name = "customer") UUID customer) {
+        return service.getUserBills(customer);
+    }
+
+    @GetMapping("/bills/{customer}/avg")
+    public void getUserBillsAvg(@PathVariable(name = "customer") UUID customer) {
+        service.getUserBillsAvg(customer);
+    }
 }

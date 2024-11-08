@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface DDARepository extends JpaRepository<DDAEntity, UUID> {
 
     DDAEntity findByCustomer(UUID customer);
+
+    Boolean existsByCustomerAndStatus(UUID customer, DDAStatus status);
 }

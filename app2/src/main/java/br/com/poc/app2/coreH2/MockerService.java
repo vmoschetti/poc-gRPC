@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Slf4j
 @Component
 @AllArgsConstructor
 public class MockerService {
 
-    private final BillRepository app2BillRepository;
+    private final BillRepository repository;
 
 
     public void loadTable() {
@@ -17,12 +19,17 @@ public class MockerService {
         log.info("Loading table");
 
         final var mocker = new BillMocker();
+        final var bills = new ArrayList<BillEntity>();
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 200000; i++) {
 
-            app2BillRepository.save(mocker.buildMockEntity());
+            bills.add(mocker.buildMockEntity());
 
         }
+
+        log.info("Saving table");
+
+        repository.saveAll(bills);
 
         log.info("Load table successfully");
 
