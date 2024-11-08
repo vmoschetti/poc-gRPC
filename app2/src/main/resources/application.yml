@@ -1,0 +1,13 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: app2
+  datasource:
+    url: jdbc:h2:mem:app2;DB_CLOSE_DELAY=-1;MODE=MySQL
+    driverClassName: org.h2.Driver
+    username: app2
+    password: app2
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
