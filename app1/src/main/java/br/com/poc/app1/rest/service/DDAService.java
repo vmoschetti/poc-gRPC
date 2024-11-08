@@ -35,7 +35,7 @@ public class DDAService {
         final var existsDDAUser = repository.existsByCustomerAndStatus(customerId, DDAStatus.ACTIVE);
 
         if (Boolean.FALSE.equals(existsDDAUser)) {
-            return null;
+            return Collections.emptyList();
         }
 
         final var bills = gateway.getBills(customerId);
