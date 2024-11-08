@@ -5,9 +5,12 @@ spring:
   application:
     name: app1
   datasource:
-    url: jdbc:h2:mem:app1;DB_CLOSE_DELAY=-1;MODE=MySQL
+    url: jdbc:h2:mem:pocgrpc;DB_CLOSE_DELAY=-1;MODE=MySQL
     driverClassName: org.h2.Driver
-    username: app1
-    password: app1
+    username: grpc
+    password: grpc
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
